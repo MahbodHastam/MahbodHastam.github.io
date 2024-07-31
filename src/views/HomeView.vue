@@ -1,9 +1,12 @@
 <script setup lang="ts">
-import TheWelcome from '../components/TheWelcome.vue'
+import AboutSection from '@/components/Home/AboutSection.vue'
+import HeroSection from '@/components/Home/HeroSection.vue'
+import Wrapper from '@/components/base/Wrapper.vue'
 </script>
 
 <template>
-  <main>
-    <TheWelcome />
-  </main>
+  <Wrapper container>
+    <HeroSection />
+    <AboutSection />
+  </Wrapper>
 </template>
