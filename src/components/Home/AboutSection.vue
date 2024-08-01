@@ -3,6 +3,7 @@ import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { onMounted } from 'vue'
 import data from '@/data.json'
+import { copy } from '@/utils'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -30,6 +31,18 @@ const aboutMeParagraphs = [
   `My experience includes implementing responsive designs, integrate back-end APIs (if there's possible), and ensuring cross-browser compatibility. I am always eager to leverage my skills and experience to create engaging and effective user experiences.
 `,
 ]
+
+const onCopy = (string: string, el?: HTMLElement) => {
+  copy(string)
+
+  if (!el) return
+
+  el.style.color = '#6ae9c3'
+
+  setTimeout(() => {
+    el.style.color = '#7a7a7a'
+  }, 1000)
+}
 
 onMounted(() => {
   gsap.to('#about', {
@@ -68,9 +81,21 @@ onMounted(() => {
             <a
               :href="i.url"
               target="_blank"
-              class="ml-4 underline decoration-black/20 duration-100 hover:opacity-70"
-              >{{ i.label }}</a
+              class="ml-4 inline-flex items-center gap-1 underline decoration-black/20 duration-100 hover:opacity-70"
             >
+              {{ i.label }}
+            </a>
+            <button
+              @click.prevent="
+                onCopy(
+                  i.url.replace('mailto:', ''),
+                  $event.currentTarget as HTMLElement,
+                )
+              "
+              class="ml-2 inline-flex items-center align-middle text-[#7a7a7a] duration-100 hover:opacity-70"
+            >
+              <Icon icon="tabler:copy" class="h-4 w-4" />
+            </button>
           </li>
         </ul>
       </div>

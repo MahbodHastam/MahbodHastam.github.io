@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { cn } from '@/utils'
+import { cn, copy } from '@/utils'
 import { useRoute } from 'vue-router'
 import data from '@/data.json'
 import { ref } from 'vue'
@@ -15,7 +15,7 @@ const emailWrapperEl = ref<HTMLElement>()
 const showEmail = ref(true)
 
 const copyEmail = () => {
-  navigator.clipboard.writeText(data.email)
+  copy(data.email)
 
   if (!emailWrapperEl.value) return
 
