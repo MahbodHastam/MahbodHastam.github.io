@@ -44,7 +44,7 @@ const copyEmail = () => {
           class="flex flex-col items-center gap-4 uppercase sm:flex-row sm:gap-16"
         >
           <h1 class="text-lg sm:text-xl">Mahbod Ahmadi</h1>
-          <nav class="space-x-8">
+          <!-- <nav class="space-x-8">
             <RouterLink
               v-for="item in items"
               :key="item.label"
@@ -58,7 +58,7 @@ const copyEmail = () => {
             >
               {{ item.label }}
             </RouterLink>
-          </nav>
+          </nav> -->
         </div>
         <div class="hidden items-center gap-4 lg:flex">
           <p class="uppercase">Let's Connect</p>

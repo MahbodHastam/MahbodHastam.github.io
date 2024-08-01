@@ -2,6 +2,7 @@
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { onMounted } from 'vue'
+import data from '@/data.json'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -19,18 +20,43 @@ onMounted(() => {
     },
   })
 })
+
+const waysToConnectMe = [
+  {
+    key: 'E-Mail',
+    label: 'mahbod4782@gmail.com',
+    url: 'mailto:mahbod4782@gmail.com',
+  },
+  { key: 'Github', label: '@MahbodHastam', url: 'https://github.com/MahbodHastam' },
+  { key: 'X', label: '@MahbodHastam', url: 'https://x.com/MahbodHastam' },
+  { key: 'Telegram', label: '@Bod_Bod', url: 'https://t.me/Bod_Bod' },
+]
 </script>
 
 <template>
   <div
     id="about"
-    class="bg-white-100 rounded-5xl mt-24 w-full scale-90 p-12 text-text lg:mt-40"
+    class="mt-24 w-full scale-90 rounded-5xl bg-white-100 p-12 text-text lg:mt-40"
   >
-    <h2 class="cc-text mb-4 text-xl font-medium">About me</h2>
-    <p v-for="i in 4" class="cc-text mb-4">
+    <h2 class="mb-4 text-xl font-medium">About me</h2>
+    <p v-for="i in 4" class="mb-4">
       Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maiores quos tenetur
       cumque magni esse rerum, blanditiis quod at temporibus nam reprehenderit
       ratione quia deserunt asperiores quis impedit. Quod, omnis fugit.
     </p>
+    <h2 class="mb-4 mt-12 text-xl font-medium">Ways to Connect me</h2>
+    <div class="mx-auto">
+      <ul class="list-disc space-y-2 marker:text-gray-400 sm:ml-5">
+        <li v-for="i in waysToConnectMe">
+          <span class="block sm:inline-flex sm:w-20">{{ i.key }}:</span>
+          <a
+            :href="i.url"
+            target="_blank"
+            class="ml-4 underline duration-100 hover:opacity-70"
+            >{{ i.label }}</a
+          >
+        </li>
+      </ul>
+    </div>
   </div>
 </template>

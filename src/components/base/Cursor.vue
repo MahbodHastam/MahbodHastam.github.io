@@ -2,18 +2,6 @@
 import { onMounted } from 'vue'
 import { gsap } from 'gsap'
 
-/* onMounted(() => {
-  gsap.set('#cursor', { xPercent: -50, yPercent: -50 })
-
-  let xTo = gsap.quickTo('#cursor', 'x', { duration: 0.3, ease: 'power3' }),
-    yTo = gsap.quickTo('#cursor', 'y', { duration: 0.3, ease: 'power3' })
-
-  window.addEventListener('mousemove', (e) => {
-    xTo(e.x)
-    yTo(e.y)
-  })
-}) */
-
 onMounted(() => {
   let cursor = document.querySelector('.cursor'),
     cursorScale = document.querySelectorAll('.cc-scale'),
@@ -23,7 +11,7 @@ onMounted(() => {
     mouseX = 0,
     mouseY = 0
 
-  gsap.to({}, 0.01, {
+  gsap.to({}, 0.016, {
     repeat: -2,
     onRepeat: function () {
       gsap.set(cursor, {
