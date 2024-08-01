@@ -8,7 +8,7 @@ jobs:
     name: Build Vue
     steps:
       - uses: actions/checkout@v2
-      - id: Build-Vue
+      - name: Build-Vue
         # uses: xRealNeon/VuePagesAction@1.0.1
         # with:
         #   username: 'MahbodHastam'
