@@ -25,6 +25,12 @@ const waysToConnectMe = [
   },
 ]
 
+const aboutMeParagraphs = [
+  `Web Developer with a strong focus on front-end projects (and many experiences with PHP and Laravel) since 2016. Proficient in HTML, CSS, JavaScript and Typescript, I have successfully contributed to numerous companies and person's websites.`,
+  `My experience includes implementing responsive designs, integrate back-end APIs (if there's possible), and ensuring cross-browser compatibility. I am always eager to leverage my skills and experience to create engaging and effective user experiences.
+`,
+]
+
 onMounted(() => {
   gsap.to('#about', {
     y: 0,
@@ -47,10 +53,11 @@ onMounted(() => {
     class="mt-24 w-full scale-90 rounded-5xl bg-white-100 p-12 text-text lg:mt-40"
   >
     <h2 class="mb-4 text-xl font-medium">About me</h2>
-    <p v-for="i in 4" class="mb-4">
-      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maiores quos tenetur
-      cumque magni esse rerum, blanditiis quod at temporibus nam reprehenderit
-      ratione quia deserunt asperiores quis impedit. Quod, omnis fugit.
+    <p
+      v-for="i in aboutMeParagraphs"
+      class="mb-4 text-pretty indent-1 leading-loose lg:text-justify"
+    >
+      {{ i }}
     </p>
     <div id="ways">
       <h2 class="mb-4 mt-12 text-xl font-medium">Ways to Connect me</h2>
@@ -61,7 +68,7 @@ onMounted(() => {
             <a
               :href="i.url"
               target="_blank"
-              class="ml-4 underline duration-100 hover:opacity-70"
+              class="ml-4 underline decoration-black/20 duration-100 hover:opacity-70"
               >{{ i.label }}</a
             >
           </li>
