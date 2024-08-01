@@ -9,8 +9,20 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - id: Build-Vue
-        uses: xRealNeon/VuePagesAction@1.0.1
-        with:
-          username: 'MahbodHastam'
-          reponame: 'mahbodhastam.github.io'
-          token: ${{ secrets.GITHUB_TOKEN }}
+        # uses: xRealNeon/VuePagesAction@1.0.1
+        # with:
+        #   username: 'MahbodHastam'
+        #   reponame: 'mahbodhastam.github.io'
+        #   token: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          npm install
+          npm run build
+          cd dist/
+          ln -s index.html 404.html
+          git config --global user.email "${{ secrets_GITHUB_EMAIL }}"
+          git config --global user.name "MahbodHastam"
+          git init
+          git add -A
+          git commit -m "build"
+          git push -f https://MahbodHastam:${{ secrets.GITHUB_TOKEN }}@github.com/MahbodHastam/mahbodhastam.github.io.git master:gh-pages
+        shell: bash
