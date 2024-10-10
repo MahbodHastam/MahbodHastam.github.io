@@ -52,7 +52,7 @@ onMounted(() => {
       class="mx-auto mt-2 flex max-w-md flex-col items-center space-y-2 text-center text-xs font-semibold md:flex-row md:items-start md:justify-between md:text-base"
     >
       <span class="w-1/2">Currently Crafting Expieriences at Home</span>
-      <span>(2016 - Present)</span>
+      <span>(2018 - Present)</span>
     </div>
   </div>
 </template>
