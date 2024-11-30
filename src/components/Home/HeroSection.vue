@@ -40,7 +40,10 @@ onMounted(() => {
 </script>
 
 <template>
-  <div id="hero" class="mt-12 px-6 uppercase text-text">
+  <div
+    id="hero"
+    class="mt-12 px-6 uppercase text-text duration-200 dark:text-gray-50"
+  >
     <h2
       class="skewElement mx-auto mt-10 w-full text-center text-5xl font-semibold tracking-tighter sm:text-7xl md:max-w-3xl md:text-9xl"
     >

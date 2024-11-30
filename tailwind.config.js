@@ -3,6 +3,7 @@ import defaultTheme from 'tailwindcss/defaultTheme'
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
+  darkMode: 'class',
   theme: {
     container: {
       center: true,
@@ -14,6 +15,7 @@ export default {
       },
       colors: {
         background: '#EFEFEF',
+        'background-dark': '#1a1a1a',
         text: '#0e0e0e',
         white: {
           DEFAULT: '#FFFFFF',

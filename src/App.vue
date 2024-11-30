@@ -2,16 +2,28 @@
 import { RouterView } from 'vue-router'
 import HeaderNavbar from './components/base/HeaderNavbar.vue'
 import Footer from './components/base/Footer.vue'
+import ThemeSwitcher from './components/base/ThemeSwitcher.vue'
+import useDarkThemeSwitcher from '@/composables/darkThemeSwitcher'
+import { onMounted, provide } from 'vue'
+
+const { darkMode, toggleDarkMode } = useDarkThemeSwitcher()
+
+provide('darkMode', darkMode)
+
+onMounted(() => {
+  document.documentElement.classList.toggle('dark', darkMode.value)
+})
 </script>
 
 <template>
-  <HeaderNavbar />
+  <HeaderNavbar @toggle-dark-mode="toggleDarkMode" />
   <RouterView v-slot="{ Component, route }">
     <Transition :name="route.meta.transition as string" mode="out-in">
       <component :is="Component" />
     </Transition>
   </RouterView>
   <Footer />
+  <ThemeSwitcher />
 </template>
 
 <style>

@@ -63,7 +63,7 @@ onMounted(() => {
 <template>
   <div
     id="about"
-    class="mt-24 w-full scale-90 rounded-5xl bg-white-100 p-12 text-text lg:mt-40"
+    class="mt-24 w-full scale-90 rounded-5xl bg-white-100 p-12 text-text duration-200 lg:mt-40 dark:bg-[#2a2a2a] dark:text-gray-50"
   >
     <h2 class="mb-4 text-xl font-medium">About me</h2>
     <p

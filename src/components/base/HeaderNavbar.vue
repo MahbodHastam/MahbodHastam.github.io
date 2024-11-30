@@ -2,17 +2,19 @@
 import { cn, copy } from '@/utils'
 import { useRoute } from 'vue-router'
 import data from '@/data.json'
-import { ref } from 'vue'
+import { inject, ref } from 'vue'
 
+const emit = defineEmits(['toggleDarkMode'])
 const route = useRoute()
 
 const items = [
   { label: 'About', href: '/' },
-  { label: 'Work', href: '/work' },
+  // { label: 'Work', href: '/work' },
 ]
 
 const emailWrapperEl = ref<HTMLElement>()
 const showEmail = ref(true)
+const darkMode = inject('darkMode', ref(!!localStorage.getItem('darkMode')))
 
 const copyEmail = () => {
   copy(data.email)
@@ -24,7 +26,14 @@ const copyEmail = () => {
 
   setTimeout(() => {
     if (emailWrapperEl.value) {
-      emailWrapperEl.value.style.backgroundColor = '#ffffff'
+      emailWrapperEl.value.style.backgroundColor = ''
+      emailWrapperEl.value.classList.add('dark:bg-[#2a2a2a]')
+      emailWrapperEl.value.classList.add('bg-white')
+      if (darkMode.value) {
+        // emailWrapperEl.value.style.backgroundColor = '#2a2a2a'
+      } else {
+        // emailWrapperEl.value.style.backgroundColor = '#ffffff'
+      }
       showEmail.value = true
     }
   }, 1000)
@@ -34,11 +43,11 @@ const copyEmail = () => {
 <template>
   <div
     id="navbar"
-    class="fixed left-0 right-0 top-0 z-50 w-full bg-gradient-to-b from-background/80 to-background backdrop-blur-md md:px-4"
+    class="fixed left-0 right-0 top-0 z-50 w-full bg-background/80 backdrop-blur-md transition-all delay-100 duration-200 md:px-4 dark:bg-transparent"
   >
-    <div class="container">
+    <div class="container relative">
       <div
-        class="flex justify-center text-nowrap py-6 font-semibold text-text lg:justify-between"
+        class="flex justify-center text-nowrap py-6 font-semibold text-text transition-colors delay-200 lg:justify-between dark:text-gray-50"
       >
         <div
           class="flex flex-col items-center gap-4 uppercase sm:flex-row sm:gap-16"
@@ -64,7 +73,7 @@ const copyEmail = () => {
           <p class="uppercase">Let's Connect</p>
           <div
             ref="emailWrapperEl"
-            class="inline-flex w-[245.13px] items-center rounded-full bg-white pl-4 text-sm duration-200"
+            class="inline-flex w-[245.13px] items-center rounded-full bg-white pl-4 text-sm transition-all delay-150 duration-100 ease-linear dark:bg-[#2a2a2a]"
           >
             <div class="flex-1 text-center">
               <Transition name="fade" mode="out-in">
@@ -94,6 +103,15 @@ const copyEmail = () => {
           </div>
         </div>
       </div>
+      <button
+        @click.prevent="emit('toggleDarkMode')"
+        class="absolute right-7 top-7 rounded-full bg-background text-sm text-[#7a7a7a] transition-all duration-200 hover:text-[#5a5a5a] lg:right-3 lg:top-20 dark:bg-transparent dark:text-gray-50 dark:hover:text-gray-300"
+      >
+        <Transition name="fade" mode="out-in">
+          <Icon v-if="darkMode" icon="solar:moon-sleep-bold" class="h-5 w-5" />
+          <Icon v-else icon="solar:sun-2-bold-duotone" class="h-5 w-5" />
+        </Transition>
+      </button>
     </div>
   </div>
 </template>
