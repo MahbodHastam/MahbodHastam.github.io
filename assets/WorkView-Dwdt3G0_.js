@@ -1,0 +1,1 @@
+import{d as t,c as a,w as s,_ as o,o as r,a as n}from"./index-B-u-_0MV.js";const l=t({__name:"WorkView",setup(c){return(_,e)=>(r(),a(o,{container:""},{default:s(()=>e[0]||(e[0]=[n("h1",{class:"w-full text-center text-6xl"},"This is work page",-1)])),_:1}))}});export{l as default};
